@@ -1,0 +1,167 @@
+
+<!DOCTYPE html> 
+<html>
+<head> 
+	<!--Libraries-->
+	<script src="https://cdn.firebase.com/js/client/1.1.1/firebase.js"></script>
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-serialize-object/2.0.0/jquery.serialize-object.compiled.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/path.js/0.8.4/path.min.js"></script>
+	<script src="../asset/jquery.toaster.js"></script>
+	<script src="../asset/select2.full.min.js"></script>
+
+	<!--My app -->
+	<script src="../asset/app.js"></script>
+	<link rel-"stylesheet" type="text/css" href="../css/toastr.min.css">
+	<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/app.css">
+	<link rel="stylesheet" type="text/css" href="../css/select2.min.css">
+	
+</head> 
+<body > 
+
+	<header class="navbar navbar-static-top navbar-inverse navbar-custom" id="top" role="banner">
+		<div class="container">
+			<div class="navbar-header">
+				<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse"> 
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button> 
+				<a href="#" class="navbar-brand">Chat WebApp</a>
+
+			</div>
+			<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+				<ul class="nav navbar-nav">
+					<li id-"navChat"> 
+						<a href="#/chat">Chat</a>
+					</li>
+					<li id-"navChannel"> 
+						<a href="#/channel">Channel</a>
+					</li>
+					<li id-"navProfile">
+						<a href="#/profile">Profile</a>
+					</li>
+					<li id-"navRegister"> 
+						<a href="#/register">Register</a>
+					</li>
+					<li> 
+						<a href="#/login">Login</a>
+					</li>
+					<li> 
+						<a href="#/logout">Logout</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<div id="container" class="container">
+
+		<!-- Profile -->
+		<form id="frmProfile" role="form">
+			<h2>Profile</h2>
+			<div class="form-group">
+				<label for="txtName">Name</label>
+				<input type="name" class="form-control" id="txtName" placeholder="Enter name" name="name" />
+			</div>
+			<div class="form-group">
+				<label for="txtRegEmail">Email address</label>
+				<input type="email" class="form-control" id="txtEmail" placeholder="Enter email" name="email" />
+			</div>
+			<div class="form-group">
+				<label for="txtRegPass">Password</label>
+				<input type="password" class="form-control" id="txtPass" placeholder="Password" name="password" />
+			</div>
+			<button type="submit" class="btn btn-default btn-block btn-custom">Update</button>
+			<br />
+			<br />
+		</form>
+
+		<!-- Channel -->
+		<form id="frmChannel" role="form">
+			<h2>Channel</h2>
+			<div class="row">
+				<div id="messages" class="col-md-12" class="chat">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<input type="text" id="messageInput" class="message" placeholder="Message..."/>
+			</div>
+
+			<button type="submit" class="btn btn-default btn-block btn-custom">Send</button>
+		</form>
+
+		<!-- Login -->
+		<form id="frmLogin" role="form">
+			<h2>Login</h2>
+			<div class="form-group">
+				<label for="txtEmail">Email address</label>
+				<input type="email" class="form-control" id="txtEmail" placeholder="Enter email" name="email" />
+			</div>
+			<div class="form-group">
+				<label for="txtPass">Password</label>
+				<input type="password" class="form-control" id="txtPass" placeholder="Password" name="password" />
+			</div>
+			<button type="submit" class="btn btn-default btn-block btn-custom">Login</button>
+			<br />
+			<br />
+		</form>
+		<!-- / Login -->
+
+		<!-- Logout -->
+		<form id="frmLogout" role="form">
+			<h2>You are logged out!</h2>
+		</form>
+		<!-- / Logout -->
+
+		<!-- Register -->
+		<form id="frmRegister" role="form">
+			<h2>Register</h2>
+			<div class="form-group">
+				<label for="txtName">Name</label>
+				<input type="name" class="form-control" id="txtName" placeholder="Enter name" name="name" />
+			</div>
+			<div class="form-group">
+				<label for="txtRegEmail">Email address</label>
+				<input type="email" class="form-control" id="txtEmail" placeholder="Enter email" name="email" />
+			</div>
+			<div class="form-group">
+				<label for="txtRegPass">Password</label>
+				<input type="password" class="form-control" id="txtPass" placeholder="Password" name="password" />
+			</div>
+			<button type="submit" class="btn btn-default btn-block btn-custom">Register</button>
+		</form>
+		<!-- / Register -->
+
+		<!-- Chat -->
+		<form id="frmChat" role="form">
+			<h2>Chat</h2>
+			<div class="form-group">
+				<select id="listUsers"></select>
+			</div>
+
+			<div class="form-group">
+				<input type="text" id="messageInputChat" class="message" placeholder="Message..."/>
+			</div>
+
+			<div class="form-group">
+				
+				<button type="submit" class="btn btn-default btn-block btn-custom">Send message</button>
+			</div>
+
+			<div class="row">
+				<div id="messagesChat" class="col-md-12" class="chat">
+				</div>
+			</div>
+		</div>
+	</form>
+	<!-- / Chat-->
+	<hr />
+</div>
+</body>
+</html>
+
