@@ -207,6 +207,8 @@
         // Soumission du formulaire d'enregistrement et création de l'utilisateur
         form.on('submit', function(e) {
 
+            newSession = false;
+        
             var userAndPass = $(this).serializeObject();
 
             var loginPromise = createUserAndLogin(userAndPass);
