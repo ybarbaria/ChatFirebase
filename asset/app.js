@@ -96,6 +96,19 @@
                 return authData.password.email.replace(/@.*/, '');
         }
     }
+    
+    /** 
+     *	@function
+     * 	@name preventInject 
+     *	Empêche les injections de script et HTML 
+     */
+    function preventInject(value) {
+        return value.replace(/&/g, '&amp;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/</g, '&lt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&apos;');
+    }
 
     /** 
      *	@function
@@ -350,7 +363,7 @@
                         author: userProfil.name,
                         to: userToSend
                     },
-                    value: messageFieldChat.val()
+                    value: preventInject(messageFieldChat.val())
                 }
             });
         });
@@ -399,7 +412,6 @@
 
             });
         });
-
 
         // Ajout d'un listener sur les nouveaux messages enregistrés sur firebase pour l'utilisateur concerné
         ref.child('messageInput').on('child_added', function(snapshot) {
@@ -494,7 +506,7 @@
             // Sauvegarde du message sur firebase
             ref.child('message').push({
                 name: username,
-                text: message
+                text: preventInject(message)
             });
             messageField.val('');
         });
