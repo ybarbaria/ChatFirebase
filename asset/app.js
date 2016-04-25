@@ -280,6 +280,8 @@
             userRef.update(userInfo, function onComplete() {
 
             });
+
+            e.preventDefault();
         });
     }
 
@@ -366,6 +368,8 @@
                     value: preventInject(messageFieldChat.val())
                 }
             });
+
+            e.preventDefault();
         });
 
         selectUsers.on("change", function() {
@@ -509,6 +513,8 @@
                 text: preventInject(message)
             });
             messageField.val('');
+
+            e.preventDefault();
         });
 
         // Ajout d'un listener sur les nouveaux messages enregistrés sur firebase
